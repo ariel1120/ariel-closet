@@ -21,7 +21,7 @@
 ## 使用方式
 1. 把整理好的衣服資料填入 data.json。
 2. 把衣服照片放到 assets/ 資料夾，並用連號命名。
-3. 網站會在 https://ariel1120.github.io/ 開啟。
+3. 網站會在 https://ariel1120.github.io/ariel-closet/ 開啟。
 
 ## 本地預覽
 在這個資料夾執行：
