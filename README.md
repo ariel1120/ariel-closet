@@ -5,18 +5,23 @@
 ## 特色
 - 手機版介面
 - 可搜尋與分類
-- 可將喜歡的衣服加入「想買清單」
+- 可將喜歡的衣服加入「購物車」
+- 可標記「已售出」商品
+- 可保存訂單紀錄與本機資料
 - 直接部署到 GitHub Pages
 
+## 使用到的技術
+- HTML5：頁面結構
+- CSS3：響應式版型、卡片樣式、頁籤與按鈕樣式
+- JavaScript：商品渲染、搜尋篩選、購物車、結帳流程、訂單紀錄、已售出標籤
+- JSON：商品資料來源
+- LocalStorage：保存購物車、訂單紀錄與已售出狀態
+- GitHub Pages：靜態網站部署
+
 ## 使用方式
-1. 把你整理好的衣服資料填入 data.json。
-2. 把衣服照片放到 assets/ 資料夾，並用連號命名，例如 `0001.jpg`, `0002.jpg`, `0003.jpg`。
-   - 如果你的 `data.json` 內每件商品都使用 `id`，網頁會自動讀取 `./assets/0001.jpg`、`./assets/0002.jpg`。
-   - 也可以同時保留 `image` 欄位指定特殊圖片網址。
-3. 在 GitHub 建立名為 ariel1120.github.io 的 Repository。
-4. 把這個資料夾內容推到 main 分支。
-5. 到 Repository 的 Settings → Pages，選擇 Deploy from a branch，Branch 選 main / root。
-6. 網站會在 https://ariel1120.github.io/ 開啟。
+1. 把整理好的衣服資料填入 data.json。
+2. 把衣服照片放到 assets/ 資料夾，並用連號命名。
+3. 網站會在 https://ariel1120.github.io/ 開啟。
 
 ## 本地預覽
 在這個資料夾執行：
