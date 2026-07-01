@@ -1,0 +1,8 @@
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="800" rx="40" fill="#f3e8ff"/>
+  <rect x="220" y="180" width="360" height="430" rx="32" fill="#ffffff"/>
+  <path d="M310 280c0-60 50-110 110-110s110 50 110 110" fill="#d8b4fe"/>
+  <path d="M300 310h200l-24 230H324z" fill="#a78bfa"/>
+  <rect x="290" y="540" width="220" height="30" rx="15" fill="#7c3aed"/>
+  <text x="400" y="720" text-anchor="middle" font-family="Segoe UI, Arial" font-size="34" fill="#6b21a8">上傳你的衣服照片</text>
+</svg>

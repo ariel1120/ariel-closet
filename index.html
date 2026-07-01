@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#8b5cf6" />
+    <title>我的衣櫃電商頁面</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">手機版衣櫃清單</p>
+          <h1>我的衣服收藏館</h1>
+          <p class="hero-copy">把所有衣服、圖片、種類都整理在這裡，讓網購慾望更容易被滿足。</p>
+        </div>
+        <div class="hero-badge">可直接部署到 GitHub Pages</div>
+      </header>
+
+      <section class="toolbar">
+        <label class="search-box" for="searchInput">
+          <span>🔍</span>
+          <input id="searchInput" type="search" placeholder="搜尋衣服、風格、顏色" />
+        </label>
+        <label class="filter-box" for="categoryFilter">
+          <span>分類</span>
+          <select id="categoryFilter">
+            <option value="all">全部</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="summary-bar">
+        <div>
+          <strong id="itemCount">0</strong>
+          <span>件衣服</span>
+        </div>
+        <div>
+          <strong id="wishlistCount">0</strong>
+          <span>想買清單</span>
+        </div>
+      </section>
+
+      <section class="tabs-panel">
+        <div id="categoryTabs" class="category-tabs" role="tablist" aria-label="衣服分類"></div>
+      </section>
+
+      <section class="wishlist-panel">
+        <div class="section-header">
+          <h2>購物車</h2>
+          <span class="section-subtitle">把喜歡的衣服加入這裡</span>
+        </div>
+        <div id="wishlistList" class="wishlist-list">目前沒有選擇的衣服</div>
+        <div class="cart-actions">
+          <button id="checkoutBtn" class="btn-primary">前往結帳</button>
+          <button id="clearCartBtn" class="btn-secondary">清空購物車</button>
+        </div>
+      </section>
+
+      <section id="checkoutPanel" class="checkout-panel hidden">
+        <h2>結帳</h2>
+        <div id="checkoutSummary" class="checkout-summary"></div>
+        <div class="checkout-actions">
+          <button id="placeOrderBtn" class="btn-primary">完成下單</button>
+          <button id="cancelCheckoutBtn" class="btn-secondary">返回購物車</button>
+        </div>
+      </section>
+
+      <section class="orders-panel">
+        <div class="section-header">
+          <h2>訂單紀錄</h2>
+          <button id="clearOrdersBtn" class="btn-secondary">刪除所有訂單</button>
+        </div>
+        <div id="ordersList" class="orders-list"></div>
+      </section>
+
+      <section id="catalog" class="catalog-grid"></section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

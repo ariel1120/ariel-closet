@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1",
+    "name": "白色T-shirt",
+    "category": "上衣",
+    "price": "NT$ 590",
+    "note": "簡約日常，搭配褲子或裙子都很方便。",
+    "image": "./assets/placeholder.svg"
+  },
+  {
+    "id": "2",
+    "name": "黑色牛仔褲",
+    "category": "下身",
+    "price": "NT$ 1,290",
+    "note": "百搭款，適合日常通勤與週末出遊。",
+    "image": "./assets/placeholder.svg"
+  },
+  {
+    "id": "3",
+    "name": "灰色外套",
+    "category": "外套",
+    "price": "NT$ 1,890",
+    "note": "氣溫變化大時很實用，也適合街頭風。",
+    "image": "./assets/placeholder.svg"
+  },
+  {
+    "id": "4",
+    "name": "白色洋裝",
+    "category": "洋裝",
+    "price": "NT$ 2,390",
+    "note": "清爽俐落，適合約會、聚餐與日常穿搭。",
+    "image": "./assets/placeholder.svg"
+  }
+]
