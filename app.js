@@ -13,6 +13,9 @@ const cancelCheckoutBtnEl = document.getElementById('cancelCheckoutBtn');
 const placeOrderBtnEl = document.getElementById('placeOrderBtn');
 const ordersListEl = document.getElementById('ordersList');
 const clearOrdersBtnEl = document.getElementById('clearOrdersBtn');
+const imageModalEl = document.getElementById('imageModal');
+const modalImageEl = document.getElementById('modalImage');
+const closeModalBtnEl = document.getElementById('closeModalBtn');
 
 let items = [];
 let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
@@ -20,6 +23,8 @@ let orders = JSON.parse(localStorage.getItem('orders') || '[]');
 let soldItems = JSON.parse(localStorage.getItem('soldItems') || '[]');
 let longPressTimer = null;
 let longPressTriggered = false;
+let displayedItemCount = 50;
+const ITEMS_PER_LOAD = 50;
 
 function saveWishlist() {
   localStorage.setItem('wishlist', JSON.stringify(wishlist));
@@ -117,6 +122,16 @@ function handleSoldTagPointerUp() {
     window.clearTimeout(longPressTimer);
     longPressTimer = null;
   }
+}
+
+function openImageModal(imageUrl) {
+  modalImageEl.src = imageUrl;
+  imageModalEl.classList.remove('hidden');
+}
+
+function closeImageModal() {
+  imageModalEl.classList.add('hidden');
+  modalImageEl.src = '';
 }
 
 function showCheckout() {
@@ -274,7 +289,7 @@ function renderCatalog() {
       const sold = soldItems.includes(item.id);
       return `
         <article class="card">
-          <img src="${getImageUrl(item)}" alt="${item.name}" onerror="this.src='./assets/placeholder.svg'; this.onerror=null" />
+          <img src="${getImageUrl(item)}" alt="${item.name}" class="card-image" data-item-id="${item.id}" onerror="this.src='./assets/placeholder.svg'; this.onerror=null" />
           <div class="card-body">
             <div class="card-top">
               <span class="badge">${item.category}</span>
@@ -300,7 +315,20 @@ function renderCatalog() {
     .join('');
 }
 
+function loadMoreItems() {
+  const filteredItems = getFilteredItems();
+  const catalogRect = catalogEl.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+  
+  // 當目錄距離底部少於 500px 時，載入更多
+  if (catalogRect.bottom < windowHeight + 500 && displayedItemCount < filteredItems.length) {
+    displayedItemCount += ITEMS_PER_LOAD;
+    renderCatalog();
+  }
+}
+
 function render() {
+  displayedItemCount = 50; // 重設為初始值
   renderCategoryTabs();
   renderWishlist();
   renderCheckoutSummary();
@@ -330,7 +358,29 @@ async function init() {
   catalogEl.addEventListener('pointerleave', handleSoldTagPointerUp);
   catalogEl.addEventListener('pointercancel', handleSoldTagPointerUp);
 
+  closeModalBtnEl.addEventListener('click', closeImageModal);
+
+  imageModalEl.addEventListener('click', (event) => {
+    if (event.target === imageModalEl || event.target === imageModalEl.querySelector('.modal-overlay')) {
+      closeImageModal();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !imageModalEl.classList.contains('hidden')) {
+      closeImageModal();
+    }
+  });
+
+  window.addEventListener('scroll', loadMoreItems, { passive: true });
+
   catalogEl.addEventListener('click', (event) => {
+    const img = event.target.closest('.card-image');
+    if (img) {
+      openImageModal(img.src);
+      return;
+    }
+
     const button = event.target.closest('button[data-id]');
     if (button) {
       toggleWishlist(button.dataset.id);
